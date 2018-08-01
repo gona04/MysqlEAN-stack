@@ -1,0 +1,20 @@
+<br>
+<mat-card>
+  <form (submit)=  "onAddPost(postForm)" #postForm="ngForm">
+      <mat-form-field>
+          <input matInput type="text" name="title" ngModel #title="ngModel" required placeholder="Question Title"/>
+          <mat-error *ngIf="title.invalid"> Title Cannot be null </mat-error>
+        </mat-form-field>
+      <mat-form-field>
+        <textarea matInput rows="6"  name="content" ngModel #content="ngModel" required placeholder="Question in detail"></textarea>
+        <mat-error *ngIf="content.invalid"> Content cannot be null </mat-error>
+      </mat-form-field>
+      <button 
+        type="submit"
+        mat-raised-button 
+        color="primary">
+        Save
+      </button> 
+  </form>
+  
+</mat-card>

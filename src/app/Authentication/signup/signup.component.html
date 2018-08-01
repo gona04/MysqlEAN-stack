@@ -1,0 +1,47 @@
+<br>
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <!-- <form *ngIf="!isLoading"> -->
+  <form (submit)= "onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
+      <mat-form-field>
+          <input matInput type="text" name="fullName" ngModel #fullName="ngModel" required placeholder="Full Name" maxlength="70"/>
+          <mat-error *ngIf="fullName.invalid"> Please valid name </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput type="email" name="emailId" ngModel #email="ngModel" required email placeholder="Email Id" maxlength="100"/>
+          <mat-error *ngIf="email.invalid"> Please enter valid email </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input 
+          matInput 
+          type="password" 
+          name="password" 
+          ngModel
+          #password="ngModel" 
+          required 
+          placeholder="Password" 
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"/>
+        <mat-error *ngIf="password.invalid"> Password must contain minimum eight characters(max 20), at least one uppercase letter, one lowercase letter, one number and one special character</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input 
+          matInput 
+          type="password" 
+          name="password2" 
+          ngModel 
+          #password2="ngModel" 
+          required 
+          placeholder="Re enter password" 
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" maxlength="20"/>
+        <mat-error *ngIf="password2.invalid"> Password must contain minimum eight characters(max 20), at least one uppercase letter, one lowercase letter, one number and one special character</mat-error>
+      </mat-form-field>
+      <button 
+        type="submit"
+        mat-raised-button 
+        color="primary" style="margin-top: 3rem;">
+        Register
+      </button> 
+   
+  </form>
+  
+</mat-card>

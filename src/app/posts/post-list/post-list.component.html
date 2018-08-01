@@ -1,0 +1,17 @@
+
+    <mat-accordion multi="true" *ngIf="posts !== undefined">
+       <mat-expansion-panel *ngFor="let post of posts">
+         <mat-expansion-panel-header>
+           {{post.title}}
+         </mat-expansion-panel-header>
+         <p>
+           {{post.content}}
+         </p>
+         <mat-action-row *ngIf="userIsAuthenticated">
+           <button mat-button color="warn" (click)="onDelete(post.postId)">DELETE</button>
+         </mat-action-row>
+       </mat-expansion-panel>
+    </mat-accordion>
+
+    <p class="mat-body-1 info-text" *ngIf="posts == undefined" > No posts added yet! </p>
+ 
