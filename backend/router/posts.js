@@ -7,6 +7,17 @@ const checkAuth = require('../middleware/check-auth');
 const router = express.Router();
 router.use(bodyPasrser.json());
 
+//Create table posts 
+router.get('/createPosts', (req, res, next) => {
+    mysql.query('CREATE TABLE posts (postId int PRIMARY KEY, title varchar(100), content varchar(225))');
+    res.send(' blond table created ');
+});
+
+// //TO CREATE DATABASE 
+// router.get('/createDatabase', (req,res,next) => {
+//     mysql.query('CREATE DATEBASE HELLO');
+//     res.send('DATABSE CREATED');
+//   })
 
 //ADDING POSTS
 router.post('/', checkAuth, (req, res, next) => {
