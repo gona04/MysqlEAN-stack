@@ -5,9 +5,12 @@ const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
+router.get('/createUser', (req, res, next) => {
+    mysql.query('Create table user (userId int AUTO_INCREMENT PRIMARY KEY, fullName varchar(100) NOT NULL, emailId varchar(100) NOT NULL, password varchar(100) NOT NULL, registeredOn DATE, postId int, FOREIGN KEY (postId) REFERENCES posts(postId))');
+    res.send('user table created');
+});
+
 router.post("/signup" , (req,res, next) => {
-  
-    
     bcrypt.hash(req.body.password, 10).then(hash => {
         const user = {
             fullName: req.body.fullName,
